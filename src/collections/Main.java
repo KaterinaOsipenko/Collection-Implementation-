@@ -1,5 +1,7 @@
 package collections;
 
+import java.util.ArrayList;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -9,5 +11,20 @@ public class Main {
            HashSet - class interface Set
            TreeSet - class interface SortedSet
          */
+        ArrayListTest <String> list = new ArrayListTest<>();
+        list.add("Hanna");
+        list.add("Elena");
+        list.add("Joe");
+        list.add("Irina");
+        list.add("Pete");
+
+        list.trimToSize();
+        list.forEach(System.out::println);
+        System.out.println(list.size());
+
+
+
+
+
     }
 }

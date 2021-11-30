@@ -2,11 +2,11 @@ package collections;
 
 import java.util.Iterator;
 
-public class IteratorArray <E> implements Iterator <E>  {
+public class IteratorTest <E> implements Iterator <E>  {
     private int index = 0;
-    E[] values;
+    private E[] values;
 
-    IteratorArray(E[] values) {
+    IteratorTest(E[] values) {
         this.values = values;
     }
 
