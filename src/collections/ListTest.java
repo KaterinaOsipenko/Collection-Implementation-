@@ -1,25 +1,29 @@
 package collections;
 
-public interface ListTest<E> extends Iterable<E> {
 
-    boolean add(E e);
-    void clear();
-    E get(int index);
-    int size();
-    E set(int index, E e);
-    String toString();
-    boolean isEmpty();
-    boolean contains(E e);
-    int indexOf(E e);
-    int lastIndexOf(E e);
+public interface ListTest<E> extends CollectionTest<E> {
+
     void add(int index, E element);
-    E remove(int index);
-    boolean remove(E e);
-
-    boolean addAll(E[] e);
 
     boolean addAll(int index, E[] e);
 
-    boolean removeAll(E[] e);
+    E get(int index);
 
+    int indexOf(E e);
+
+    int lastIndexOf(E e);
+
+    E remove(int index);
+
+   // default void replaceAll(UnaryOperator<E> operator); !!
+
+    E set(int index, E e);
+
+    // default void	sort(Comparator<? super E> c); !!
+
+    ListTest<E>	subList(int fromIndex, int toIndex);
+
+    String toString();
+
+    boolean removeElement(E e);
 }

@@ -1,10 +1,15 @@
 package collections;
 
 import java.util.Iterator;
+import java.util.function.Consumer;
 
 public class IteratorTest <E> implements Iterator <E>  {
     private int index = 0;
     private E[] values;
+
+    IteratorTest() {
+
+    }
 
     IteratorTest(E[] values) {
         this.values = values;
@@ -19,4 +24,5 @@ public class IteratorTest <E> implements Iterator <E>  {
     public E next() {
         return values[index++];
     }
+
 }

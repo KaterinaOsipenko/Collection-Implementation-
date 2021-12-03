@@ -1,7 +1,6 @@
 package collections;
 
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.function.Consumer;
 
 public class ArrayListTest<E> implements ListTest<E> {
@@ -10,7 +9,6 @@ public class ArrayListTest<E> implements ListTest<E> {
 
     private E[] values;
     private int size;
-    private int point = 0;
 
 
     ArrayListTest() {
@@ -24,38 +22,15 @@ public class ArrayListTest<E> implements ListTest<E> {
             throw new IllegalStateException("Capacity can't be less than 0!");
         }
     }
-/*
-    ArrayListTest(E[] array) {
-        if (array != null) {
-            this.values = (E[]) new Object[array.length];
-            this.values = array.clone();
-        } else {
-            throw new NullPointerException("Array can`t be empty!");
-        }
-    }*/
 
-    @Override
-    public int size() {
-        return this.size;
-    }
-
-    @Override
-    public E get(int index) {
-        if (index < 0 || index >= this.size()) {
-            throw new IndexOutOfBoundsException("The index is out of range.");
-        } else {
-            return this.values[index];
-        }
-    }
-
-    @Override
-    public E set(int index, E e) {
-        if (index < 0 || index >= this.size()) {
-            throw new IndexOutOfBoundsException("The index is out of range.");
-        } else {
-            return values[index] = e;
-        }
-    }
+     /*   ArrayListTest(E[] array) {
+            if (array != null) {
+                this.values = (E[]) new Object[array.length];
+                this.values = array.clone();
+            } else {
+                throw new NullPointerException("Array can`t be empty!");
+            }
+        }*/
 
     @Override
     public boolean add(E e) {
@@ -80,83 +55,6 @@ public class ArrayListTest<E> implements ListTest<E> {
     }
 
     @Override
-    public void clear() {
-        this.size = 0;
-        ensureCapacity(DEFAULT_CAPACITY);
-    }
-
-    @Override
-    public boolean contains(E e) {
-        for (E el : values) {
-            if(el == e) return true;
-        }
-        return false;
-    }
-
-    @Override
-    public boolean remove(E e) {
-        for(int i = 0; i <= this.size() - 1; i++) {
-            if (values[i] == e) {
-                for (int j = i; i <= this.size(); i++) {
-                    if (i == this.size() - 1) {
-                        break;
-                    } else {
-                        values[i] = values[i + 1];
-                    }
-                }
-                this.size--;
-            }
-        }
-        trimToSize();
-        return true;
-    }
-
-    @Override
-    public E remove(int index) {
-        if (index < 0 || index >= this.size()) {
-            throw new IndexOutOfBoundsException("The index is out of range.");
-        } else {
-            E removeEl = values[index];
-            for (int i = index; i <= this.size(); i++) {
-                if (index == this.size() - 1) {
-                    break;
-                } else {
-                    values[i] = values[i + 1];
-                }
-            }
-            this.size--;
-            return removeEl;
-        }
-    }
-
-    @Override
-    public String toString() {
-        trimToSize();
-        return Arrays.toString(values);
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return (this.size() == 0);
-    }
-
-    @Override
-    public int indexOf(E e) {
-        for (int i = 0; i < this.size(); i++) if (values[i] == e) return i;
-        return -1;
-    }
-
-    @Override
-    public int lastIndexOf(E e) {
-        for (int i = size(); i > -1; i--) {
-            if (values[i] == e) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    @Override
     public boolean addAll(E[] e) {
         if (e == null) {
             throw new NullPointerException("Array can`t be empty!");
@@ -165,7 +63,7 @@ public class ArrayListTest<E> implements ListTest<E> {
             ensureCapacity(this.size() + e.length);
             this.size += e.length;
             int j = 0;
-            for (int i = temp; i < this.size() ; i++) {
+            for (int i = temp; i < this.size(); i++) {
                 values[i] = e[j];
                 j++;
             }
@@ -195,7 +93,7 @@ public class ArrayListTest<E> implements ListTest<E> {
                 j++;
             }
             int c = 0;
-            for (int i = index + e.length; i < this.size() ; i++) {
+            for (int i = index + e.length; i < this.size(); i++) {
                 values[i] = old[c];
                 c++;
             }
@@ -204,12 +102,110 @@ public class ArrayListTest<E> implements ListTest<E> {
     }
 
     @Override
+    public void clear() {
+        this.size = 0;
+        ensureCapacity(DEFAULT_CAPACITY);
+    }
+
+    @Override
+    public boolean contains(E e) {
+        for (E el : this.values) {
+            if (el == e) return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        for (E el : this.values) {
+            if (el == o) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public E get(int index) {
+        if (index < 0 || index >= this.size()) {
+            throw new IndexOutOfBoundsException("The index is out of range.");
+        } else {
+            return this.values[index];
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        for (int i = 0; i < this.size(); i++) {
+            hash = (int) (31 * hash + (this.get(i) == null ? 0 : this.get(i).hashCode()));
+        }
+        return hash;
+    }
+
+    @Override
+    public int indexOf(E e) {
+        for (int i = 0; i < this.size(); i++) if (values[i] == e) return i;
+        return -1;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return (this.size() == 0);
+    }
+
+    @Override
+    public int lastIndexOf(E e) {
+        for (int i = size(); i > -1; i--) {
+            if (values[i] == e) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    @Override
+    public E remove(int index) {
+        if (index < 0 || index >= this.size()) {
+            throw new IndexOutOfBoundsException("The index is out of range.");
+        } else {
+            E removeEl = values[index];
+            for (int i = index; i <= this.size(); i++) {
+                if (index == this.size() - 1) {
+                    break;
+                } else {
+                    values[i] = values[i + 1];
+                }
+            }
+            this.size--;
+            return removeEl;
+        }
+    }
+
+    @Override
+    public boolean removeElement(E e) {
+        for (int i = 0; i <= this.size() - 1; i++) {
+            if (values[i] == e) {
+                for (int j = i; i <= this.size(); i++) {
+                    if (i == this.size() - 1) {
+                        break;
+                    } else {
+                        values[i] = values[i + 1];
+                    }
+                }
+                this.size--;
+            }
+        }
+        trimToSize();
+        return true;
+    }
+
     public boolean removeAll(E[] e) {
         if (e == null) {
             throw new NullPointerException("Array can`t be empty!");
         } else {
-            for(E elem : e)
-                if (this.contains(elem)) remove(elem);
+            for (E elem : e)
+                if (this.contains(elem)) removeElement(elem);
                 else {
                     return false;
                 }
@@ -218,8 +214,75 @@ public class ArrayListTest<E> implements ListTest<E> {
     }
 
     @Override
-    public Iterator<E> iterator() {
+    public E set(int index, E e) {
+        if (index < 0 || index >= this.size()) {
+            throw new IndexOutOfBoundsException("The index is out of range.");
+        } else {
+            return values[index] = e;
+        }
+    }
+
+    @Override
+    public int size() {
+        return this.size;
+    }
+
+    @Override
+    public ListTest<E> subList(int fromIndex, int toIndex) {
+        ListTest<E> list = new ArrayListTest<E>();
+        if (fromIndex < 0 || toIndex > size || fromIndex > toIndex) {
+            throw new IndexOutOfBoundsException("Illegal endpoint index value!");
+        } else {
+            for (int i = fromIndex; i <= toIndex; i++) {
+                list.add(values[i]);
+            }
+        }
+        return list;
+    }
+
+    @Override
+    public E[] toArray() {
+        E[] obj = (E[])new Object[this.size()];
+        for (int i = 0; i < values.length; i++) {
+            obj[i] = this.values[i];
+        }
+        return obj;
+    }
+
+    @Override
+    public String toString() {
+        trimToSize();
+        return Arrays.toString(values);
+    }
+
+    @Override
+    public IteratorTest<E> iterator() {
         return new IteratorTest<>(values);
+    }
+
+    public void forEach(Consumer<? super E> action) {
+        for (E e : this) {
+            action.accept(e);
+        }
+    }
+
+    protected void removeRange(int fromIndex, int toIndex) {
+        if (fromIndex < 0 || fromIndex >= size() || toIndex > size() || toIndex < fromIndex) {
+            throw new IndexOutOfBoundsException("FromIndex or toIndex is out of range");
+        } else if (toIndex == fromIndex) {
+            return;
+        } else {
+            for (int i = fromIndex; i <= toIndex; i++) {
+                if (toIndex == this.size() - 1) {
+                    break;
+                } else {
+                    values[i] = values[i + 1];
+                }
+            }
+
+        }
+        this.size -= (toIndex - (fromIndex - 1));
+        trimToSize();
     }
 
     public void ensureCapacity(int minCapacity) {
@@ -234,30 +297,43 @@ public class ArrayListTest<E> implements ListTest<E> {
     public void trimToSize() {
         ensureCapacity(size());
     }
-
-    protected void removeRange(int fromIndex, int toIndex) {
-       if (fromIndex < 0 || fromIndex >= size() || toIndex > size() || toIndex < fromIndex) {
-           throw new IndexOutOfBoundsException("FromIndex or toIndex is out of range");
-       } else if (toIndex==fromIndex) {
-           return;
-       } else {
-           for (int i = fromIndex; i <= toIndex; i++) {
-               if (toIndex == this.size() - 1) {
-                   break;
-               } else {
-                   values[i] = values[i + 1];
-               }
-           }
-
-       }
-        this.size -= (toIndex - (fromIndex - 1));
-        trimToSize();
-    }
-
-    public void forEach(Consumer<? super E> action) {
-        for(E e : this) {
-            action.accept(e);
-        }
-    }
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
