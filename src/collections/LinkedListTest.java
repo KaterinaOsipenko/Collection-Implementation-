@@ -434,7 +434,7 @@ public class LinkedListTest<E> implements ListTest<E>, DequeTest<E>{
     @Override
     public boolean removeElement(E e) {
         if(this.isEmpty()) {
-            throw new NoSuchElementException("The list is enpty!");
+            throw new NoSuchElementException("The list is empty!");
         } else {
             Node temp = head;
             while (temp.next != null) {

@@ -1,5 +1,6 @@
 package collections;
 
+import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 
 public interface MapTest<K, V> {
@@ -16,11 +17,11 @@ public interface MapTest<K, V> {
 
     boolean	containsValue(V value);
 
-    SetTest<MapTest.EntryTest<K,V>>	entrySet();
+    SetTest<EntryTestClass<K, V>> entrySet();
 
     boolean	equals(Object o);
 
-    // void forEach(BiConsumer<? super K,? super V> action);
+    void forEach(BiConsumer<? super K,? super V> action);
 
     V get(K key);
 
@@ -60,5 +61,7 @@ public interface MapTest<K, V> {
         V getValue();
 
         V setValue(V value);
+
+        int hashcode();
     }
 }

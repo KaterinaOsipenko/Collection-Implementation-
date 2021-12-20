@@ -4,11 +4,17 @@ public class EntryTestClass<K, V> implements EntryTest<K, V> {
 
     private K key;
     private V value;
+    EntryTestClass<K, V> next;
+
+    EntryTestClass() {
+
+    }
 
     EntryTestClass(K key, V value) {
         this.key = key;
         this.value = value;
     }
+
 
     @Override
     public K getKey() {
@@ -26,4 +32,5 @@ public class EntryTestClass<K, V> implements EntryTest<K, V> {
         this.value = value;
         return temp;
     }
+
 }
