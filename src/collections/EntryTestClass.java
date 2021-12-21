@@ -5,6 +5,9 @@ public class EntryTestClass<K, V> implements EntryTest<K, V> {
     private K key;
     private V value;
     EntryTestClass<K, V> next;
+    EntryTestClass<K, V> left;
+    EntryTestClass<K, V> right;
+    EntryTestClass<K, V> parent;
 
     EntryTestClass() {
 
@@ -13,6 +16,12 @@ public class EntryTestClass<K, V> implements EntryTest<K, V> {
     EntryTestClass(K key, V value) {
         this.key = key;
         this.value = value;
+    }
+
+    EntryTestClass(K key, V value, EntryTestClass<K, V> parent) {
+        this.key = key;
+        this.value = value;
+        this.parent = parent;
     }
 
 

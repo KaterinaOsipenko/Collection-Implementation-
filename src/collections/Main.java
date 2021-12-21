@@ -30,7 +30,7 @@ public class Main {
         test.add(5);
         test.add(2);
         test.add(7);*/
-
+/*
         HashMapTest<String, Integer> map = new HashMapTest<>();
         map.put("Alina", 132);
         map.put("Kary", 145);
@@ -45,7 +45,27 @@ public class Main {
 
 
         SetTest<EntryTestClass<String, Integer>> test = map.entrySet();
-       test.showSet();
+       test.showSet();*/
+
+        TreeMapClass<Integer, String> tree = new TreeMapClass<>();
+        System.out.println(tree.size());
+        tree.put(11, "Kate");
+        tree.put(18, "Lina");
+        tree.put(10, "Mark");
+        tree.put(25, "Mila");
+        tree.put(2, "Roma");
+
+        tree.showTree();
+        System.out.println(tree.firstEntry() );
+
+        TreeMap<Integer, String> ex = new TreeMap<>();
+        ex.put(121, "Lena");
+        ex.put(185, "Alisa");
+        ex.put(2, "Becky");
+        ex.put(15, "Licka");
+        System.out.println(ex);
+
+
 
     }
 }
