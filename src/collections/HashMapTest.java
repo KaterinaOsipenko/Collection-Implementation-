@@ -253,6 +253,9 @@ public class HashMapTest<K, V> implements MapTest<K, V> {
             for (EntryTestClass<K, V> e : this.buckets) {
                 if (e != null) {
                     action.accept(e.getKey(), e.getValue());
+                    if(e.next != null) {
+                        action.accept(e.next.getKey(), e.next.getValue());
+                    }
                 }
             }
         }

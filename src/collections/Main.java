@@ -47,23 +47,38 @@ public class Main {
         SetTest<EntryTestClass<String, Integer>> test = map.entrySet();
        test.showSet();*/
 
-        TreeMapClass<Integer, String> tree = new TreeMapClass<>();
-        System.out.println(tree.size());
-        tree.put(11, "Kate");
-        tree.put(18, "Lina");
-        tree.put(10, "Mark");
-        tree.put(25, "Mila");
-        tree.put(2, "Roma");
+        EntryTestClass<Integer, String> map  = new EntryTestClass<>(11, "Elena");
+        System.out.println(map.getEntry() );
+        TreeMapClass<Integer, String> mapClass = new TreeMapClass<>();
+        System.out.println(mapClass.size());
+        mapClass.put(11, "Kate");
+        mapClass.put(18, "Lina");
+        mapClass.put(10, "Mark");
+        mapClass.put(25, "Mila");
+        mapClass.put(2, "Roma");
+        mapClass.put(100, "Elya");
+        mapClass.showTree();
 
-        tree.showTree();
-        System.out.println(tree.firstEntry() );
+         mapClass.putIfAbsent(19, "Erik") ;
+        mapClass.showTree();
 
-        TreeMap<Integer, String> ex = new TreeMap<>();
-        ex.put(121, "Lena");
-        ex.put(185, "Alisa");
-        ex.put(2, "Becky");
-        ex.put(15, "Licka");
-        System.out.println(ex);
+        SortedMapTest<Integer, String> exam = mapClass.subMap(10, 10);
+        exam.forEach((k, v) -> System.out.println(k + " " + v));
+
+
+
+
+
+//        TreeMap<Integer, String> mapEx = new TreeMap<>();
+//        mapEx.put(121, "Lena");
+//        mapEx.put(185, "Alisa");
+//        mapEx.put(2, "Becky");
+//        mapEx.put(15, "Licka");
+//        System.out.println(mapEx);
+//        System.out.println(mapEx.pollFirstEntry());
+//        System.out.println(mapEx);
+//        System.out.println(mapEx.pollFirstEntry());
+//        System.out.println(mapEx);
 
 
 
