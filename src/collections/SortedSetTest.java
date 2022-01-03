@@ -2,17 +2,17 @@ package collections;
 
 import java.util.Comparator;
 
-public interface SortedSetTest<E> extends SetTest<E> {
+public interface SortedSetTest<K> extends SetTest<K> {
 
-    Comparator<? super E> comparator();
+    Comparator<? super K> comparator();
 
-    E first();
+    K first();
 
-    SortedSetTest<E> headSet(E toElement);
+    SortedSetTest<K> headSet(K toElement);
 
-    E last();
+    K last();
 
-    SortedSetTest<E> subSet(E fromElement, E toElement);
+    SortedSetTest<K> subSet(K fromElement, K toElement);
 
-    SortedSetTest<E> tailSet(E fromElement);
+    SortedSetTest<K> tailSet(K fromElement);
 }

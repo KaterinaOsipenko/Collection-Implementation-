@@ -138,7 +138,7 @@ public class ArrayListTest<E> implements ListTest<E> {
     public int hashCode() {
         int hash = 7;
         for (int i = 0; i < this.size(); i++) {
-            hash = (int) (31 * hash + (this.get(i) == null ? 0 : this.get(i).hashCode()));
+            hash = 31 * hash + (this.get(i) == null ? 0 : this.get(i).hashCode());
         }
         return hash;
     }

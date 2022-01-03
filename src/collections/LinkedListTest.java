@@ -577,7 +577,7 @@ public class LinkedListTest<E> implements ListTest<E>, DequeTest<E>{
     public int hashCode() {
         int hash = 7;
         while (head.next != null) {
-            hash = (int) (31 * hash + (head.value == null ? 0 : head.value.hashCode()));
+            hash = 31 * hash + (head.value == null ? 0 : head.value.hashCode());
             head = head.next;
         }
         return hash;

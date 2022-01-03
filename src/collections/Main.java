@@ -1,5 +1,7 @@
 package collections;
 
+import jdk.swing.interop.SwingInterOpUtils;
+
 import java.lang.reflect.Array;
 import java.util.*;
 
@@ -44,11 +46,9 @@ public class Main {
         set.add(12);
 
 
-        SetTest<EntryTestClass<String, Integer>> test = map.entrySet();
-       test.showSet();*/
 
-        EntryTestClass<Integer, String> map  = new EntryTestClass<>(11, "Elena");
-        System.out.println(map.getEntry() );
+*/
+
         TreeMapClass<Integer, String> mapClass = new TreeMapClass<>();
         System.out.println(mapClass.size());
         mapClass.put(11, "Kate");
@@ -57,30 +57,17 @@ public class Main {
         mapClass.put(25, "Mila");
         mapClass.put(2, "Roma");
         mapClass.put(100, "Elya");
-        mapClass.showTree();
+        System.out.println(mapClass.size());
 
-         mapClass.putIfAbsent(19, "Erik") ;
-        mapClass.showTree();
-
-        SortedMapTest<Integer, String> exam = mapClass.subMap(10, 10);
-        exam.forEach((k, v) -> System.out.println(k + " " + v));
-
-
-
-
-
-//        TreeMap<Integer, String> mapEx = new TreeMap<>();
-//        mapEx.put(121, "Lena");
-//        mapEx.put(185, "Alisa");
-//        mapEx.put(2, "Becky");
-//        mapEx.put(15, "Licka");
-//        System.out.println(mapEx);
-//        System.out.println(mapEx.pollFirstEntry());
-//        System.out.println(mapEx);
-//        System.out.println(mapEx.pollFirstEntry());
-//        System.out.println(mapEx);
-
-
-
+        TreeSetClass<Integer> tree = new TreeSetClass<>();
+        tree.add(10);
+        tree.add(12);
+        tree.add(1);
+        tree.add(54);
+        tree.add(90);
+        tree.showSet();
+        System.out.println();
+        NavigableSetTest<Integer> trees = (NavigableSetTest<Integer>) tree.tailSet(12,false);
+        trees.showSet();
     }
 }

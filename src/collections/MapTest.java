@@ -55,7 +55,7 @@ public interface MapTest<K, V> {
 
     CollectionTest<V> values();
 
-    public interface EntryTest<K, V> {
+    interface EntryTest<K, V> {
         K getKey();
 
         V getValue();
